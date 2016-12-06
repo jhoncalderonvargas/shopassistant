@@ -67,7 +67,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnAdicionar:
-                listArres.add(new Respuestas(reper.getText().toString(),claper.getText().toString(),"",""));
+                String cadena = claper.getText().toString();
+                String delimitadores= " ";
+                String[] palabrasSeparadas = cadena.split(delimitadores);
+                listArres.add(new Respuestas(reper.getText().toString(),palabrasSeparadas[0],palabrasSeparadas[1],palabrasSeparadas[2]));
                 Respuestas[] arrayres= new Respuestas[listArres.size()];
                 arrayres=listArres.toArray(arrayres);
                 adapter = new AdaptaRes(this,R.layout.layout_respuestas,arrayres);

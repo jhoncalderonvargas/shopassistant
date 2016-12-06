@@ -64,7 +64,7 @@
         android:textColor="#000000"
         android:textAlignment="center"
         android:background="#5a2ed0ff"
-        android:text="Introduce una respuesta personalizada" />
+        android:hint="Introduce una respuesta personalizada" />
 
         <EditText
             android:id="@+id/claper"
@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:textColor="#000000"
             android:background="#ac018fb8"
-            android:text="Adiciona palabras clave"
+            android:hint="Adiciona palabras clave"
             android:textAlignment="center"
             android:textSize="18dp"
             android:layout_marginBottom="15dp"/>
