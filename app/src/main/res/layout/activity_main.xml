@@ -28,9 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:src="@mipmap/log"
-            android:scaleX="1.9"
-            android:scaleY="1.9"
+            android:src="@mipmap/logoapp"
             android:background="#00ffffff" />
 
         <Button
@@ -50,8 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:textSize="20dp"
-        android:textColor="#000000"
+        android:hint="Mensajes de Estado de la App"
         android:textAlignment="center"
         android:background="#5a2ed0ff" />
 
@@ -64,7 +61,7 @@
         android:textColor="#000000"
         android:textAlignment="center"
         android:background="#5a2ed0ff"
-        android:hint="Introduce una respuesta personalizada" />
+        android:hint="Introduzca una respuesta personalizada" />
 
         <EditText
             android:id="@+id/claper"
@@ -72,10 +69,10 @@
             android:layout_height="wrap_content"
             android:textColor="#000000"
             android:background="#ac018fb8"
-            android:hint="Adiciona palabras clave"
+            android:hint="Introduzca palabras clave"
             android:textAlignment="center"
             android:textSize="18dp"
-            android:layout_marginBottom="15dp"/>
+            android:layout_marginBottom="5dp"/>
 
     <ListView
         android:id="@+id/listView"
