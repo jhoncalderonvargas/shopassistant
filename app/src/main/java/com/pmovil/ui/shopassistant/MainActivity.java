@@ -95,6 +95,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             listen=true;
         }
         else
-            salida.setText("No Encontrado");
+            salida.setText("No  Encontrado");
     }
 }
