@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="5dp"
+    android:paddingRight="8dp"
+    android:paddingTop="5dp"
+    android:orientation="vertical"
+    tools:context="com.pmovil.ui.shopassistant.MainActivity"
+    android:id="@+id/layoutPrincipal">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btnAdicionar"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:text="ADICIONAR RESPUESTA"
+            android:layout_alignParentLeft="true"
+            android:background="#ac018fb8"
+            android:textColor="#000000"
+            android:textSize="17dp"
+            android:scaleY="1"/>
+
+        <ImageButton
+            android:id="@+id/Saap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/log"
+            android:scaleX="1.9"
+            android:scaleY="1.9"
+            android:background="#00ffffff" />
+
+        <Button
+            android:id="@+id/btnInventario"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:text="INVENTARIO"
+            android:layout_alignParentRight="true"
+            android:background="#ac018fb8"
+            android:textColor="#000000"
+            android:textSize="17dp"
+            />
+
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/muestra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        android:textColor="#000000"
+        android:textAlignment="center"
+        android:background="#5a2ed0ff" />
+
+    <EditText
+        android:id="@+id/reper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="20dp"
+        android:textColor="#000000"
+        android:textAlignment="center"
+        android:background="#5a2ed0ff"
+        android:text="Introduce una respuesta personalizada" />
+
+        <EditText
+            android:id="@+id/claper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:background="#ac018fb8"
+            android:text="Adiciona palabras clave"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            android:layout_marginBottom="15dp"/>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal" />
+</LinearLayout>
