@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (ocu !=-1) {
             salida.setText(res.claves[i-1]);
             if (isNumeric(res.claves[i-1])) {
-                ClipData clip = ClipData.newPlainText("text", ("Hay "+listArinve.get(i-1).unidades+" unidades disponibles de "+listArinve.get(i-1).name));
+                ClipData clip = ClipData.newPlainText("text", (" Hay "+listArinve.get(i-1).unidades+" unidades disponibles de "+listArinve.get(i-1).name));
                 clipboard = (ClipboardManager) this.getSystemService(CLIPBOARD_SERVICE);
                 clipboard.setPrimaryClip(clip);
                 listen = true;
