@@ -40,12 +40,12 @@ public class Respuestas {
         this.id = id;
     }
 
-    public ContentValues toContentValues() {
+    /*public ContentValues toContentValues() {
         ContentValues values = new ContentValues();
         String ARRAY_DIVIDER = " ";
         values.put(EsquemaRes.EsqRes.ID, id);
         values.put(EsquemaRes.EsqRes.RESPUESTA, claves[0]);
         values.put(EsquemaRes.EsqRes.RESPUESTA, TextUtils.join(ARRAY_DIVIDER, claves));
         return values;
-    }
+    }*/
 }

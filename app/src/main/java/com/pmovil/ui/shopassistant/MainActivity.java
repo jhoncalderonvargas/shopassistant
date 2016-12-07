@@ -3,6 +3,7 @@ package com.pmovil.ui.shopassistant;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,11 +28,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ListView listaRes;
     AdaptaRes adapter;
     ArrayList <Respuestas> listArres=new ArrayList<Respuestas>();
+    ArrayList <Articulos>  listArinv=new ArrayList<Articulos>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //listArres.add(new Respuestas("Cordial saludo, en Medellin se hacen domicilios por $5000, lo recibe el mismo dia y puede pagar al momento de recibir","domicilio","contraentrega","entrega"));
+        HelperRes helper = new HelperRes(this);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        listArres.add(new Respuestas("Esta es tu respuesta predeterminada", new String[]{"prueba", "respuesta","ensayo"}));
         //listArres.add(new Respuestas("Cordial saludo, estoy ubicado en la carrera 52#25-370, queda sobre la avenida guayabal mas adelante de la cruz roja","ubicado","recoger","pasar"));
         arrayres= new Respuestas[listArres.size()];
         arrayres=listArres.toArray(arrayres);

@@ -9,11 +9,13 @@ import java.sql.Array;
  */
 
 public class EsquemaRes {
-    public static abstract class EsqRes implements BaseColumns {
-        public static final String TABLE_NAME = "Respuestas automaticas";
-        public static final String ID = "id";
-        public static final String RESPUESTA= "res";
-        public static final String CLAVES = "claves";
+        public static final String TABLE_NAME = "res";
 
-    }
+        public static final String CN_ID = "_id";
+        public static final String CN_RESPUESTA= "res";
+        public static final String CN_CLAVES = "claves";
+        public static final String CREATE_TABLE = "create table " + TABLE_NAME + " ("
+                + CN_ID + " integer primary key autoincrement,"
+                + CN_RESPUESTA + " text not null,"
+                + CN_CLAVES + " text not null);";
 }
