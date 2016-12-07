@@ -11,6 +11,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -30,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         listArres.add(new Respuestas("Cordial saludo, en Medellin se hacen domicilios por $5000, lo recibe el mismo dia y puede pagar al momento de recibir","domicilio","contraentrega","entrega"));
         listArres.add(new Respuestas("Cordial saludo, estoy ubicado en la carrera 52#25-370, queda sobre la avenida guayabal mas adelante de la cruz roja","ubicado","recoger","pasar"));
-        arrayres= new Respuestas[8];
+        arrayres= new Respuestas[listArres.size()];
         arrayres=listArres.toArray(arrayres);
         adapter = new AdaptaRes(this,R.layout.layout_respuestas,arrayres);
         listaRes=(ListView)findViewById(R.id.listView);
