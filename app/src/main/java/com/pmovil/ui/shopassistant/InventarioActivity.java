@@ -7,19 +7,18 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import static com.pmovil.ui.shopassistant.MainActivity.listArinve;
+
 public class InventarioActivity extends AppCompatActivity {
     ListView listaInv;
     AdaptaInv adapter;
-    ArrayList<Articulos> listArinv=new ArrayList<Articulos>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventario);
-        listArinv.add(new Articulos("Mascara Antipolucion","28","1"));
-        listArinv.add(new Articulos("Drone Eachine H8c","5","2"));
-        Articulos[] arrinv= new Articulos[listArinv.size()];
-        arrinv=listArinv.toArray(arrinv);
+        Articulos[] arrinv= new Articulos[listArinve.size()];
+        arrinv=listArinve.toArray(arrinv);
         adapter = new AdaptaInv(this,R.layout.layout_inventario,arrinv);
         listaInv=(ListView)findViewById(R.id.listView2);
         View header= getLayoutInflater().inflate(R.layout.header_list2,null);

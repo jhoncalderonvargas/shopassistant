@@ -11,10 +11,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -28,14 +24,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ListView listaRes;
     AdaptaRes adapter;
     ArrayList <Respuestas> listArres=new ArrayList<Respuestas>();
-    ArrayList <Articulos>  listArinv=new ArrayList<Articulos>();
+    public static ArrayList <Articulos>  listArinve=new ArrayList<Articulos>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         HelperRes helper = new HelperRes(this);
         SQLiteDatabase db = helper.getWritableDatabase();
+        listArinve.add(new Articulos("Mascara Antipolucion","28","1"));
+        listArinve.add(new Articulos("Drone Eachine H8c","5","2"));
+        listArinve.add(new Articulos("Eachine H8c","55","3"));
         listArres.add(new Respuestas("Esta es tu respuesta predeterminada", new String[]{"prueba", "respuesta","ensayo"}));
+        listArres.add(new Respuestas("Hay -- unidades disponibles de ---", new String[]{"1", "2","3"}));
         //listArres.add(new Respuestas("Cordial saludo, estoy ubicado en la carrera 52#25-370, queda sobre la avenida guayabal mas adelante de la cruz roja","ubicado","recoger","pasar"));
         arrayres= new Respuestas[listArres.size()];
         arrayres=listArres.toArray(arrayres);
@@ -101,12 +101,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (ocu !=-1) {
             salida.setText(res.claves[i-1]);
-            ClipData clip = ClipData.newPlainText("text", res.respuesta);
-            clipboard = (ClipboardManager) this.getSystemService(CLIPBOARD_SERVICE);
-            clipboard.setPrimaryClip(clip);
-            listen=true;
+            if (isNumeric(res.claves[i-1])) {
+                ClipData clip = ClipData.newPlainText("text", ("Hay "+listArinve.get(i-1).unidades+" unidades disponibles de "+listArinve.get(i-1).name));
+                clipboard = (ClipboardManager) this.getSystemService(CLIPBOARD_SERVICE);
+                clipboard.setPrimaryClip(clip);
+                listen = true;
+            }
+            else {
+                ClipData clip = ClipData.newPlainText("text", res.respuesta);
+                clipboard = (ClipboardManager) this.getSystemService(CLIPBOARD_SERVICE);
+                clipboard.setPrimaryClip(clip);
+                listen = true;
+            }
         }
         else
             salida.setText("No Encontrado");
+    }
+    private static boolean isNumeric(String cadena){
+        try {
+            Integer.parseInt(cadena);
+            return true;
+        } catch (NumberFormatException nfe){
+            return false;
+        }
     }
 }
