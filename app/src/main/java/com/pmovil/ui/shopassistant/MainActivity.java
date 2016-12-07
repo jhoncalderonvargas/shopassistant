@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public EditText reper,claper;
     int i=0,j=0,ocu=-1,longArr=0;
     boolean listen=false;
+    Respuestas[] arrayres;
     ListView listaRes;
     AdaptaRes adapter;
     ArrayList <Respuestas> listArres=new ArrayList<Respuestas>();
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         listArres.add(new Respuestas("Cordial saludo, en Medellin se hacen domicilios por $5000, lo recibe el mismo dia y puede pagar al momento de recibir","domicilio","contraentrega","entrega"));
         listArres.add(new Respuestas("Cordial saludo, estoy ubicado en la carrera 52#25-370, queda sobre la avenida guayabal mas adelante de la cruz roja","ubicado","recoger","pasar"));
-        Respuestas[] arrayres= new Respuestas[listArres.size()];
+        arrayres= new Respuestas[8];
         arrayres=listArres.toArray(arrayres);
         adapter = new AdaptaRes(this,R.layout.layout_respuestas,arrayres);
         listaRes=(ListView)findViewById(R.id.listView);
@@ -42,19 +43,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btnAdicionar).setOnClickListener(this);
         findViewById(R.id.btnInventario).setOnClickListener(this);
         mClipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-        final Respuestas[] finalArrayres = arrayres;
         //FUNCION LLAMADA AL COPIAR AL PORTAPAPELES
         mClipboardManager.addPrimaryClipChangedListener(new ClipboardManager.OnPrimaryClipChangedListener() {
-
             @Override
             public void onPrimaryClipChanged() {
                 j=0;
-                longArr= finalArrayres.length;
+                longArr= listArres.size();
                 String newClip = mClipboardManager.getText().toString();
                 Toast.makeText(getApplicationContext(), newClip,  Toast.LENGTH_SHORT).show();
                 if (!listen) {
                     while (j<longArr) {
-                        compara(finalArrayres[j]);
+                        compara(listArres.get(j));
                         j++;
                     }
                 }
@@ -75,6 +74,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 arrayres=listArres.toArray(arrayres);
                 adapter = new AdaptaRes(this,R.layout.layout_respuestas,arrayres);
                 listaRes.setAdapter(adapter);
+                Toast.makeText(getApplicationContext(), "Respuesta adicionada",  Toast.LENGTH_SHORT).show();
+                reper.setText("");
+                claper.setText("");
                 break;
             case R.id.btnInventario:
                 startActivity(new Intent(this,InventarioActivity.class));
