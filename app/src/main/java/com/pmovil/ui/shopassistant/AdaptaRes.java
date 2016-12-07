@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -38,19 +39,18 @@ public class AdaptaRes extends ArrayAdapter<Respuestas> {
     }
 
     private class MyViewHolder {
-        public TextView respue,compa1,compa2,compa3;
+        public TextView respue;
+        public Spinner cla;
 
         public MyViewHolder(){}
 
         public MyViewHolder(View item) {
+            cla=(Spinner) item.findViewById(R.id.spinner);
             respue = (TextView) item.findViewById(R.id.textView);
             respue.setText(respuestas.getRespuesta().toString());
-            compa1 = (TextView) item.findViewById(R.id.textView1);
-            compa1.setText(respuestas.getComparacion(1).toString());
-            compa2 = (TextView) item.findViewById(R.id.textView2);
-            compa2.setText(respuestas.getComparacion(2).toString());
-            compa3 = (TextView) item.findViewById(R.id.textView3);
-            compa3.setText(respuestas.getComparacion(3).toString());
+            String[] items=respuestas.getComparacion();
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item,items);
+            cla.setAdapter(adapter);
         }
     }
 }

@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        listArres.add(new Respuestas("Cordial saludo, en Medellin se hacen domicilios por $5000, lo recibe el mismo dia y puede pagar al momento de recibir","domicilio","contraentrega","entrega"));
-        listArres.add(new Respuestas("Cordial saludo, estoy ubicado en la carrera 52#25-370, queda sobre la avenida guayabal mas adelante de la cruz roja","ubicado","recoger","pasar"));
+        //listArres.add(new Respuestas("Cordial saludo, en Medellin se hacen domicilios por $5000, lo recibe el mismo dia y puede pagar al momento de recibir","domicilio","contraentrega","entrega"));
+        //listArres.add(new Respuestas("Cordial saludo, estoy ubicado en la carrera 52#25-370, queda sobre la avenida guayabal mas adelante de la cruz roja","ubicado","recoger","pasar"));
         arrayres= new Respuestas[listArres.size()];
         arrayres=listArres.toArray(arrayres);
         adapter = new AdaptaRes(this,R.layout.layout_respuestas,arrayres);
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(getApplicationContext(), newClip,  Toast.LENGTH_SHORT).show();
                 if (!listen) {
                     while (j<longArr) {
-                        compara(listArres.get(j));
+                        compara(listArres.get(j),listArres.get(j).claves.length);
                         j++;
                     }
                 }
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String cadena = claper.getText().toString();
                 String delimitadores= " ";
                 String[] palabrasSeparadas = cadena.split(delimitadores);
-                listArres.add(new Respuestas(reper.getText().toString(),palabrasSeparadas[0],palabrasSeparadas[1],palabrasSeparadas[2]));
+                listArres.add(new Respuestas(reper.getText().toString(),palabrasSeparadas));
                 Respuestas[] arrayres= new Respuestas[listArres.size()];
                 arrayres=listArres.toArray(arrayres);
                 adapter = new AdaptaRes(this,R.layout.layout_respuestas,arrayres);
@@ -86,18 +86,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
-    private void compara(Respuestas res) {
+    private void compara(Respuestas res,int longclave) {
         ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
         entrada = String.valueOf(clipboard.getText());
         ocu=-1;
-        i=1;
-        while (ocu==-1 && i<=3){
+        i=0;
+        while (ocu==-1 && i<=longclave-1){
             ocu = entrada.indexOf(res.claves[i]);
             i++;
         }
         if (ocu !=-1) {
             salida.setText(res.claves[i-1]);
-            ClipData clip = ClipData.newPlainText("text", res.claves[0]);
+            ClipData clip = ClipData.newPlainText("text", res.respuesta);
             clipboard = (ClipboardManager) this.getSystemService(CLIPBOARD_SERVICE);
             clipboard.setPrimaryClip(clip);
             listen=true;

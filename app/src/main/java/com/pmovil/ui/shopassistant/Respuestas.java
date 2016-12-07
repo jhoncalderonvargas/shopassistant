@@ -3,38 +3,33 @@ package com.pmovil.ui.shopassistant;
 import android.content.ContentValues;
 import android.text.TextUtils;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
 public class Respuestas {
-    public String claves[] = new String[4], id;
+    public String claves[], respuesta, id;
 
     public Respuestas() {
         super();
     }
 
-    public Respuestas(String res, String compara1, String compara2, String compara3) {
+    public Respuestas(String res, String compara[]) {
         super();
-        this.claves[0] = res;
-        this.claves[1] = compara1;
-        this.claves[2] = compara2;
-        this.claves[3] = compara3;
+        this.respuesta=res;
+        this.claves = compara;
     }
 
     public String getRespuesta() {
-        return this.claves[0];
+        return this.respuesta;
     }
 
-    public String getComparacion(int i) {
-        return this.claves[i];
+    public String[] getComparacion() {
+        return this.claves;
     }
 
     public void setRespuesta(String Respuestas) {
-        this.claves[0] = Respuestas;
+        this.respuesta = Respuestas;
     }
 
-    public void setComparacion(int i, String Comparacion) {
-        this.claves[i] = Comparacion;
+    public void setComparacion(String Compara[]) {
+        this.claves = Compara;
     }
 
     public String getId() {
